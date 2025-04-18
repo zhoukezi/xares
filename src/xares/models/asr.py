@@ -5,7 +5,7 @@ import torch
 import torch.nn as nn
 from jiwer import wer
 from torch import Tensor
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from transformers import AutoModelForCausalLM, AutoTokenizer, DynamicCache
 
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
@@ -39,14 +39,14 @@ class Decoder(nn.Module):
         )
 
         self.max_seq_length = 4096
-        self.past_key_values = None
+        self.past_key_values = DynamicCache()
 
     def freeze_lm(self) -> None:
         for param in self.transformer.parameters():
             param.requires_grad = False
 
     def clear_kvcache(self) -> None:
-        self.past_key_values = None
+        self.past_key_values = DynamicCache()
 
     def forward(
         self,
