@@ -11,7 +11,6 @@ def librispeech_asr_config(encoder) -> TaskConfig:
         disabled=True,
         do_knn=False,
         formal_name="LibriSpeech-100h",
-        gradient_accumulation_steps=4,
         label_processor=None,
         metric="WER_inv",
         name="librispeech",
