@@ -146,8 +146,8 @@ class Trainer:
 
     def train_step(self, engine: Engine, batch: Tuple) -> Dict[str, Tensor]:
         self.model.train()
+        self.optimizer.zero_grad()
         with torch.enable_grad():
-            self.optimizer.zero_grad()
             loss = self.model(*self.prepare_batch_function(batch, self.device), return_loss=True)
             loss.backward()
 
