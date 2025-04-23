@@ -112,7 +112,8 @@ Here are the evaluation results for several baseline models using MLP and kNN me
 | VocalSound                     | **0.910** | 0.768    | 0.860     | 0.803     |
 | VoxCeleb1                      | **0.780** | 0.340    | 0.388     | 0.105     |
 | VoxLingua33                    | 0.814     | 0.553    | **0.873** | 0.620     |
-| **Weighted Average**           | **0.694** | 0.485    | 0.628     | 0.594     |
+| Finger snap sound[^priv]       | 0.870     | **0.872** | 0.861    | 0.808     |
+| **Weighted Average**           | **0.747** | 0.581    | 0.692     | 0.652     |
 
 ### kNN Result
 
@@ -134,7 +135,10 @@ Here are the evaluation results for several baseline models using MLP and kNN me
 | VocalSound                     | 0.382 | 0.269    | **0.405**     | 0.308     |
 | VoxCeleb1                      | **0.262** | 0.003    | 0.010     | 0.033     |
 | VoxLingua33                    | **0.376** | 0.034    | 0.360     | 0.058     |
-| **Weighted Average**           | **0.504** | 0.262    | 0.299     | 0.388     |
+| Finger snap sound[^priv]       | **0.848** | 0.787    | 0.401     | 0.461     |
+| **Weighted Average**           | **0.625** | 0.443    | 0.374     | 0.423     |
+
+[^priv]: This task is private and use dataset that is not publicly available.
 
 ## Run with your own pretrained audio encoder
 
