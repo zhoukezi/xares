@@ -10,12 +10,14 @@ def key_scratching_config(encoder) -> TaskConfig:
     return TaskConfig(
         encoder=encoder,
         name="key_scratching",
+        formal_name="Key scratching car",
         private=True,
-        epochs=50,
+        disabled=True,
+        epochs=20,
         label_processor=lambda x: class_label_maps[x["tag"]],
         output_dim=len(class_label_maps),
         train_split="key_scratching_train",
         test_split="key_scratching_test",
         valid_split="key_scratching_test",
-        eval_weight=4154,
+        eval_weight=5000,
     )
