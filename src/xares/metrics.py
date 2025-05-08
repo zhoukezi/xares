@@ -93,7 +93,7 @@ class SegmentF1Metric(Metric):
         # Binary classification, preds need to be {0,1} and targets
         pred = torch.cat(self.pred).long().cpu().numpy()
         tar = torch.cat(self.targets).long().cpu().numpy()
-        return f1_score(tar, pred, average="macro")
+        return f1_score(tar, pred, average="micro")
 
 
 def compute_eer(pred, target, positive_label: int = 1):
