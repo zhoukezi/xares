@@ -12,7 +12,10 @@ class Mlp(nn.Module):
         out_features = out_features or in_features
         self.ln = nn.LayerNorm(in_features)
         self.fc = nn.Linear(in_features, out_features)
-        self.criterion = getattr(nn, criterion)()
+        if criterion == "BCEWithLogitsLoss":
+            self.criterion = nn.BCEWithLogitsLoss(pos_weight=torch.tensor(25))
+        else:
+            self.criterion = getattr(nn, criterion)()
 
     def forward(self, x: torch.Tensor, y: torch.Tensor | None = None, return_loss: bool = False):
         x = self.ln(x)
