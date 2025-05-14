@@ -1,7 +1,6 @@
 # Reduced from `xiaomitts/common/audiowebdataset.py`
 
 import json
-import warnings
 from functools import partial
 from pathlib import Path
 from typing import Callable, Dict, Iterable, List, Optional, Sequence, Tuple, Union  # type: ignore
@@ -17,7 +16,7 @@ def fast_warn_and_continue(exn):
     if "Format not recognised" in repr(exn):
         raise RuntimeError("Format not recognised")
 
-    warnings.warn(repr(exn))
+    logger.warn(repr(exn))
     return True
 
 
