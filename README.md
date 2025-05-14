@@ -29,12 +29,17 @@ X-ARES is a benchmark for evaluating audio encoders on various audio tasks. It i
 - [x] FSD18-Kaggle
 - [x] FSD50k
 - [x] UrbanSound 8k
+- [x] Finger snap sound[^priv]
+- [x] Inside/outside car[^priv]
+- [x] Key scratching car[^priv]
+- [x] LiveEnv sounds[^priv]
+- [x] Subway broadcast[^priv]
 
 ### Music
 
 - [x] FMA
 - [x] GTZAN Genre
-- [ ] MAESTRO
+- [x] MAESTRO
 - [x] NSynth
 
 ## Installation
@@ -104,6 +109,7 @@ Here are the evaluation results for several baseline models using MLP and kNN me
 | LibriCount                     | **0.681** | 0.583    | 0.549     | 0.492     |
 | LibriSpeech-100h               | 0.608     | 0.405    | 0.721     | **0.893** |
 | LibriSpeech-MF                 | **0.986** | 0.948    | 0.973     | 0.752     |
+| MAESTRO                        | **0.524** | 0.180    | 0.011     | 0.116     |
 | NSynth-Instruments             | **0.688** | 0.443    | 0.532     | 0.336     |
 | RAVDESS                        | **0.749** | 0.442    | 0.459     | 0.467     |
 | Speech Commands V1             | **0.969** | 0.714    | 0.933     | 0.927     |
@@ -114,12 +120,17 @@ Here are the evaluation results for several baseline models using MLP and kNN me
 | VoxLingua33                    | 0.814     | 0.553    | **0.873** | 0.620     |
 | Key scratching car[^priv]      | **0.999** | 0.983    | 0.985     | 0.909     |
 | Finger snap sound[^priv]       | 0.870     | **0.872** | 0.861    | 0.808     |
-| **Weighted Average**           | **0.747** | 0.581    | 0.692     | 0.652     |
+| Inside/outside car[^priv]      | **0.972** | 0.928    | 0.866     | 0.869     |
+| Live Env [^priv]               | **0.986** | 0.955    | 0.887     | 0.759     |
+| Subway broadcast[^priv]        | **0.972** | 0.930    | 0.942     | 0.869     |
+| **Weighted Average (public tasks)**  | **0.699** | 0.490    | 0.632     | 0.598     |
+| **Weighted Average (all tasks)**     | **0.801** | 0.664    | 0.740     | 0.694     |
+
 
 ### kNN Result
 
 | Task                           | dasheng   | wav2vec2 | whisper   | data2vec  |
-:------------------------------:|:---------:|:--------:|:---------:|:---------:|
+|:------------------------------:|:---------:|:--------:|:---------:|:---------:|
 | ASV2015                        | 0.869     | 0.858    | 0.843     | **0.942** |
 | CREMA-D                        | **0.380**     | 0.221    | 0.372 | 0.351     |
 | ESC-50                         | **0.618** | 0.081    | 0.191     | 0.040     |
@@ -138,9 +149,12 @@ Here are the evaluation results for several baseline models using MLP and kNN me
 | VoxLingua33                    | **0.376** | 0.034    | 0.360     | 0.058     |
 | Key scratching car[^priv]      | **0.955** | 0.923    | 0.691     | 0.550     |
 | Finger snap sound[^priv]       | **0.848** | 0.787    | 0.401     | 0.461     |
-| **Weighted Average**           | **0.625** | 0.443    | 0.374     | 0.423     |
+| Inside/outside car[^priv]      | **0.798** | 0.575    | 0.730     | 0.588     |
+| Subway broadcast[^priv]        | **0.949** | 0.533    | 0.884     | 0.530     |
+| **Weighted Average (public tasks)**  | **0.504** | 0.262    | 0.299     | 0.388     |
+| **Weighted Averag (all tasks)**      | **0.683** | 0.469    | 0.475     | 0.455     |
 
-[^priv]: This task is private and use dataset that is not publicly available.
+[^priv]: These tasks are private and use datasets that are not publicly available.
 
 ## Run with your own pretrained audio encoder
 
