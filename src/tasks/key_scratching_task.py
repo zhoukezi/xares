@@ -12,7 +12,6 @@ def key_scratching_config(encoder) -> TaskConfig:
         name="key_scratching",
         formal_name="Key scratching car",
         private=True,
-        disabled=True,
         epochs=20,
         label_processor=lambda x: class_label_maps[x["tag"]],
         output_dim=len(class_label_maps),
