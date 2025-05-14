@@ -28,7 +28,7 @@ def worker(
     config = attr_from_py_path(task_py, endswith="_config")(encoder)
     if config.disabled:
         logger.warning(f"Task {config.name} is disabled, skipping")
-        return config.formal_name, (0, 0), (0, 0)
+        return config.formal_name, (0, 0), (0, 0), config.private
     task = XaresTask(config=config)
 
     # Run the task
@@ -176,14 +176,18 @@ def main(args):
         df["Task"] = df["Scores"].apply(lambda x: x[0])
         df["MLP_Score"] = df["Scores"].apply(lambda x: x[1][0])
         df["KNN_Score"] = df["Scores"].apply(lambda x: x[2][0])
-        df['Private']   = df["Scores"].apply(lambda x: x[3])
+        df["Private"] = df["Scores"].apply(lambda x: x[3])
         df.drop(columns=["Scores"], inplace=True)
         df.sort_values(by="Task", inplace=True)
 
         print(f"\nResults:\n{df.to_string(index=False)}")
 
-        avg_mlp_all, avg_knn_all = weighted_average({k: v[1:-1] for k, v in return_dict.items()})
-        avg_mlp_public, avg_knn_public = weighted_average({k: v[1:-1] for k, v in return_dict.items() if v[-1] == True})
+        avg_mlp_all, avg_knn_all = (
+            weighted_average({k: v[1:-1] for k, v in return_dict.items()}) if return_dict else (0, 0)
+        )
+        avg_mlp_public, avg_knn_public = (
+            weighted_average({k: v[1:-1] for k, v in return_dict.items() if v[-1]}) if return_dict else (0, 0)
+        )
 
         print("\nWeighted Average MLP Score for All Datasets:", avg_mlp_all)
         print("Weighted Average KNN Score for All Datasets:", avg_knn_all)
